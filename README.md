@@ -4,7 +4,7 @@
 
 ### About
 
-_Eyes of Sith_ is a text based adventure game written in Common Lisp where the player can roam Korriban as an 'Old Republic Era' Sith and play as evil or friendly as your heart desires. 
+_Eyes of Sith_ is a text based adventure game written in Common Lisp where the player can roam Korriban as an 'Old Republic Era' Sith and play as evil or friendly as their heart desires. 
 
 Your master, Darth Imperius, has tasked you with killing Darth Nox. You must collect the right items to defeat him, or perish trying.
 
