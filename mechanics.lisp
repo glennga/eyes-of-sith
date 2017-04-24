@@ -327,7 +327,7 @@
 (defun game-repl ()
   "REPL for our game, using specifc game read, print, eval functions."
   (let ((cmd (game-read))) ; read in the command
-    (unless (eq (car cmd) 'quit) ; only quit when user enters 'cmd'
+    (unless (eq (car cmd) 'quit) ; only quit when user enters quit
       (game-print (game-eval cmd)) ; evaluate the command
       (game-repl)))) ; loop
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
