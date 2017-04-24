@@ -48,7 +48,7 @@
 			     (have '^red@lightsaber)))
 		    (progn (format t (concat-strings (list ; get hand if have amulet and lightsaber
 						      "--------------------------------------------------------------------------~%"
-						      "You charge forward and Darth Nox narrowly avoids your blade. He triest to~%"
+						      "You charge forward and Darth Nox narrowly avoids your blade. He tries to~%"
 						      "shock you but the amulet deflects the lightning back toward the Dark Lord~%"
 						      "With Nox weakened, you waste no time and push the saber through his heart~%"
 						      "He falls to the ground next to the troopers he killed earlier. You pickup~%"

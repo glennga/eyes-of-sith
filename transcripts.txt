@@ -3,7 +3,7 @@
 ;;;; File: transcripts.txt
 
 ;;;; This file holds three transcripts of games: one where you lose to an
-;;;; NPC, one where you lose to the enviroment, and one where you win and 
+;;;; NPC, one where you lose to the environment, and one where you win and 
 ;;;; earn your rightful title as Darth (in that order).
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -107,8 +107,8 @@ You are now in the Valley Of The Dark Lords on Korriban. There is a door
 
 walk north
 --------------------------------------------------------------------------
-Torches surrond the room. The hair on your arm raises as you feel the raw
-power emanating rom the tomb. You hear faint whispers in the background
+Torches surround the room. The hair on your arm raises as you feel the raw
+power emanating from the tomb. You hear faint whispers in the background
 but see no one.
 --------------------------------------------------------------------------
 You are now in the Tomb Of Darth Bane on Korriban. There is a door going
@@ -222,7 +222,7 @@ Items- (Blue Lightsaber Kolto Pack Your Saber)
 walk north
 --------------------------------------------------------------------------
 Torches surrond the room. The hair on your arm raises as you feel the raw
-power emanating rom the tomb. You hear faint whispers in the background
+power emanating from the tomb. You hear faint whispers in the background
 but see no one.
 --------------------------------------------------------------------------
 You are now in the Tomb Of Darth Bane on Korriban. There is a door going
@@ -276,12 +276,12 @@ talk
 What do you want? Can you not see I am busy?
 --------------------------------------------------------------------------
 (A): I have been sent to kill you. Prepare to die.
-(B): Sorry my lord. I did not mean to interefere.
+(B): Sorry my lord. I did not mean to interfere.
 --------------------------------------------------------------------------
  
 a
 --------------------------------------------------------------------------
-You charge forward and Darth Nox narrowly avoids your blade. He triest to
+You charge forward and Darth Nox narrowly avoids your blade. He tries to
 shock you but the amulet deflects the lightning back toward the Dark Lord
 With Nox weakened, you waste no time and push the saber through his heart
 He falls to the ground next to the troopers he killed earlier. You pickup

@@ -14,8 +14,8 @@
 			      "miles. The faint droning of nearby speeders and starships are you can hear.~%")))
 (new-location ^tomb@of@darth@bane
 	      (concat-strings (list
-			       "Torches surrond the room. The hair on your arm raises as you feel the raw~%"
-			       "power emanating rom the tomb. You hear faint whispers in the background~%"
+			       "Torches surround the room. The hair on your arm raises as you feel the raw~%"
+			       "power emanating from the tomb. You hear faint whispers in the background~%"
 			       "but see no one.~%")))
 (new-location ^sith@temple
 	      (concat-strings (list
@@ -114,7 +114,7 @@
 (new-npc-action ^darth@imperius a
 		"Yes, I have killed him.~%")
 (new-npc-action ^darth@nox b
-		"Sorry my lord. I did not mean to interefere.~%")
+		"Sorry my lord. I did not mean to interfere.~%")
 (new-npc-action ^darth@nox a
 		"I have been sent to kill you. Prepare to die.~%")
 (new-npc-action ^imperial@trooper@1 c
