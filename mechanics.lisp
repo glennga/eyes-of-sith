@@ -1,3 +1,4 @@
+
 ;;;; -*- Mode: LISP; Syntax: Common-lisp; Package: USER; Base: 10 -*-
 ;;;; Name: Glenn Galvizo; Date: April 16, 2017
 ;;;; Course: ICS313; Assignment: 6
@@ -96,6 +97,9 @@
 ;;; *NPC-NAMES* refer to the names a user references the NPC as
 (defparameter *npc-names* nil)
 
+;;; *SELECTED-NPC* refers to current NPC the user is interacting with
+(defparameter *selected-npc* '^imperial@trooper@1)
+
 (defun npcs-at (loc npcs npc-loc)
   "Return the NPCs at the given location."
   (labels ((is-at (npc)
@@ -114,20 +118,6 @@
 	     (if (and (eq (car npc-act) npc) (eq (cadr npc-act) act-id))
 		 (push (delete npc-act *npc-actions*) *killed-npc-actions*))))
     (mapcar #'del-npc-action *npc-actions*)))
-
-(defun kill-npc (npc)
-  "Remove the given NPC from the NPC lists."
-  (labels ((del-npc (npc-entry)
-	     (if (eq (car npc-entry) npc)
-		 (push (delete npc-entry *npcs*) *killed-npcs*)))
-	   (del-npc-action (npc-act)
-	     (if (eq (car npc-act) npc)
-		 (push (delete npc-act *npc-actions*)
-		       *killed-npc-actions*))))
-    (progn (mapcar #'del-npc *npcs*)
-	   (mapcar #'del-npc-action *npc-actions*)
-	   (select '^a@dead@person)
-	   '@)))
 
 (defun npc-names-at (loc npc-names npcs npc-loc)
   "Return the NPC names at the given location."
@@ -241,6 +231,20 @@
   "Return NIL if given object is not in inventory, or the inventory if T."
   (member object (inventory)))
 
+(defun reload ()
+  "Reset the game to the beginning state."
+  (progn (format t "Your game has been reset.~%")
+         (setf *location* '^dark@councils@chambers)
+	 (setf *selected-npc* '^imperial@trooper@1)
+	 (setf *nodes* nil) (setf *not-visited* nil) (setf *visited* nil)
+	 (setf *edges* nil)
+	 (setf *npcs* nil) (setf *killed-npcs* nil) (setf *npc-locations* nil)
+	 (setf *npc-actions* nil) (setf *npc-names* nil)
+	 (setf *objects* (list '^your@saber))
+	 (setf *object-npcs* (list (list '^your@saber 'user)))
+	 (load (merge-pathnames "deflopn.lisp" *load-truename*))
+	 '@)) ; explicitly tell print to not print anything here
+
 (defun walk (dir)
   "Given direction, go to node associated with edge (change *location*)."
   (labels ((correct-way (edge)
@@ -258,25 +262,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; *ALLOWED-COMMANDS* refer to the only commands accepted by game-eval
+(defparameter *allowed-commands* '(look walk inv help quit reload
+				   select talk a b c))
+
 (defun help ()
   "Return allowed commands."
   (progn (format t "The following commands are accepted =~%~a~%"
 		 *allowed-commands*)
 	 '@)) ; print nothing from print
-
-(defun reload ()
-  "Reset the game to the beginning state."
-  (progn (format t "Your game has been reset.~%")
-         (setf *location* '^dark@councils@chambers)
-	 (setf *selected-npc* '^imperial@trooper@1)
-	 (setf *nodes* nil) (setf *not-visited* nil) (setf *visited* nil)
-	 (setf *edges* nil)
-	 (setf *npcs* nil) (setf *killed-npcs* nil) (setf *npc-locations* nil)
-	 (setf *npc-actions* nil) (setf *npc-names* nil)
-	 (setf *objects* (list '^your@saber))
-	 (setf *object-npcs* (list (list '^your@saber 'user)))
-	 (load (merge-pathnames "deflopn.lisp" *load-truename*))
-	 '@)) ; explicitly tell print to not print anything here
   
 (defun game-read ()
   "Read user commands and format it to be evaluated by game-eval"
@@ -284,10 +278,6 @@
     (flet ((quote-it (x)
 	     (list 'quote x)))
       (cons (car cmd) (mapcar #'quote-it (cdr cmd))))))
-
-;;; *ALLOWED-COMMANDS* refer to the only commands accepted by game-eval
-(defparameter *allowed-commands* '(look walk inv help quit reload
-				   select talk a b c))
 
 (defun game-eval (sexp)
   "Only evaluate commands in *ALLOWED-COMMANDS*, otherwise give error"
@@ -343,9 +333,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; *SELECTED-NPC* refers to current NPC the user is interacting with
-(defparameter *selected-npc* '^imperial@trooper@1)
-
 (defun select (npc-name)
   "Select an NPC to perform actions with."
   (labels ((is-npc-name (npc)
@@ -353,6 +340,20 @@
     (list (setf *selected-npc* (car (car (remove-if-not #'is-npc-name
 							*npc-names*))))
 	  'is 'now 'the 'selected '^N^P^C.{{)))
+
+(defun kill-npc (npc)
+  "Remove the given NPC from the NPC lists."
+  (labels ((del-npc (npc-entry)
+	     (if (eq (car npc-entry) npc)
+		 (push (delete npc-entry *npcs*) *killed-npcs*)))
+	   (del-npc-action (npc-act)
+	     (if (eq (car npc-act) npc)
+		 (push (delete npc-act *npc-actions*)
+		       *killed-npc-actions*))))
+    (progn (mapcar #'del-npc *npcs*)
+	   (mapcar #'del-npc-action *npc-actions*)
+	   (select '^a@dead@person)
+	   '@)))
 
 (defun talk ()
   "Display dialogue for current NPC name."
