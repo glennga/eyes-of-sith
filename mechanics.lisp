@@ -108,6 +108,13 @@
 	     `(,(car npc) is nearby.)))
      (apply #'append (mapcar #'describe-npc (npcs-at loc npcs npc-loc)))))
 
+(defun remove-npc-action (npc act-id)
+  "Remove a specific NPC action from the action list."
+  (labels ((del-npc-action (npc-act)
+	     (if (and (eq (car npc-act) npc) (eq (cadr npc-act) act-id))
+		 (push (delete npc-act *npc-actions*) *killed-npc-actions*))))
+    (mapcar #'del-npc-action *npc-actions*)))
+
 (defun kill-npc (npc)
   "Remove the given NPC from the NPC lists."
   (labels ((del-npc (npc-entry)
@@ -119,6 +126,7 @@
 		       *killed-npc-actions*))))
     (progn (mapcar #'del-npc *npcs*)
 	   (mapcar #'del-npc-action *npc-actions*)
+	   (select '^a@dead@person)
 	   '@)))
 
 (defun npc-names-at (loc npc-names npcs npc-loc)
@@ -129,7 +137,7 @@
 
 (defun npc-talk-to (npc)
   "Given NPC, print the appropriate dialogue."
-  (format t "~a~%" (cadr (assoc npc *npcs*))))
+  (format t (cadr (assoc npc *npcs*))))
 
 (defun get-actions (npc npc-act)
   "Get the actions associated with the given NPC."
@@ -168,13 +176,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; *OBJECTS* refer to the items a user can interact with in the game.
 ;;; Objects are currently defined in deflop.lisp.
-(defparameter *objects* '(your-saber))
+(defparameter *objects* (list '^your@saber))
 
 ;;; *OBJECT-NPC* refer to the NPCs locations associated with each
 ;;; item above. Currently formatted such that the a cell holds the
 ;;; object name followed by where that object is located.
 ;;; Object NPCs are currently defined in deflopn.lisp.
-(defparameter *object-npcs* nil)
+(defparameter *object-npcs* (list (list '^your@saber 'user)))
 
 (defun objects-on (npc objs obj-npc)
   "Given NPC and object sets, return items on current NPC."
@@ -192,7 +200,7 @@
 	    (push (list ',obj ',obj-npc) *object-npcs*))))
 
 ;;; *LOCATION* refers to the current location the user resides at.
-(defparameter *location* '^valley@of@the@dark@lords)
+(defparameter *location* '^dark@councils@chambers)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -201,7 +209,8 @@
   (prog1 (append (describe-location *location* *nodes*)
 		 (state-location *location*)
 		 (describe-paths *location* *edges*)
-		 (describe-npcs *location* *npcs* *npc-locations*))
+		 (describe-npcs *location* *npcs* *npc-locations*)
+		 (list '{{)) ; add new lines
 	 (if (member *location* *not-visited*) ; remove from not-visited list
 	     (push (delete *location* *not-visited*) *visited*))))
 
@@ -209,11 +218,16 @@
   "Return description of NPCS w/o verbose describe-location function."
   (append (state-location *location*)
 	  (describe-paths *location* *edges*)
-	  (describe-npcs *location* *npcs* *npc-locations*)))
+	  (describe-npcs *location* *npcs* *npc-locations*)
+	  (list '{{))) ; add new lines
 
 (defun inventory ()
   "Describe current items in inventory."
-  (cons 'items- (objects-on 'user *objects* *object-npcs*)))
+  (objects-on 'user *objects* *object-npcs*))
+
+(defun inv ()
+  "Describe current items in inventory, with correct format."
+  (list '^items- (inventory) '{{ ))
 
 (defun pickup (object)
   "Given object, put object in inventory."
@@ -225,7 +239,7 @@
 
 (defun have (object)
   "Return NIL if given object is not in inventory, or the inventory if T."
-  (member object (cdr (inventory))))
+  (member object (inventory)))
 
 (defun walk (dir)
   "Given direction, go to node associated with edge (change *location*)."
@@ -234,32 +248,33 @@
     (let ((next (find-if #'correct-way (cdr (assoc *location* *edges*)))))
       (if next 
           (progn (setf *location* (car next)) ; modify location if exists
-		 (cond ((member (car next) *not-visited*)
+		 (cond ((or (eq (car next) '^mysterious@room)
+			    (eq (car next) '^meeting@room))
+			(look) (reload)) ; reload if one of traps
+		   ((member (car next) *not-visited*)
 			(look))
-		       ;; if one of the traps, reload game
-		       ((or (eq next '^mysterious@room) (eq next '^meeting@room))
-			(reload))
 		       (t (look-simple))))
-	  '(you cannot go that way.))))) ; if edge does not exist
+	  '(you cannot go that way.{{))))) ; if edge does not exist
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun help ()
   "Return allowed commands."
-  (progn (format t "The following commands are accepted =~%~a"
+  (progn (format t "The following commands are accepted =~%~a~%"
 		 *allowed-commands*)
 	 '@)) ; print nothing from print
 
 (defun reload ()
   "Reset the game to the beginning state."
   (progn (format t "Your game has been reset.~%")
-         (setf *location* '^valley@of@the@dark@lords)
+         (setf *location* '^dark@councils@chambers)
 	 (setf *selected-npc* '^imperial@trooper@1)
 	 (setf *nodes* nil) (setf *not-visited* nil) (setf *visited* nil)
 	 (setf *edges* nil)
 	 (setf *npcs* nil) (setf *killed-npcs* nil) (setf *npc-locations* nil)
 	 (setf *npc-actions* nil) (setf *npc-names* nil)
-	 (setf *objects* nil) (setf *object-npcs* nil)
+	 (setf *objects* (list '^your@saber))
+	 (setf *object-npcs* (list (list '^your@saber 'user)))
 	 (load (merge-pathnames "deflopn.lisp" *load-truename*))
 	 '@)) ; explicitly tell print to not print anything here
   
@@ -271,7 +286,8 @@
       (cons (car cmd) (mapcar #'quote-it (cdr cmd))))))
 
 ;;; *ALLOWED-COMMANDS* refer to the only commands accepted by game-eval
-(defparameter *allowed-commands* '(look walk inventory help quit reload select talk a b c))
+(defparameter *allowed-commands* '(look walk inv help quit reload
+				   select talk a b c))
 
 (defun game-eval (sexp)
   "Only evaluate commands in *ALLOWED-COMMANDS*, otherwise give error"
@@ -300,6 +316,8 @@
 	    ((eql item #\@) (cons #\space (tweak-text rest t lit)))
 	    ;; if ^ sign, remove and capitalize next
 	    ((eql item #\^) (tweak-text rest t lit))
+	    ;; if { sign, add new line
+	    ((eql item #\{) (cons #\linefeed (tweak-text rest caps lit)))
 	    ;; if lit, keep item and make next item not lit
 	    (lit (cons item (tweak-text rest nil lit)))
 	    ;; if caps, then keep w/ uppercase and loop w/o uppercase next
@@ -334,12 +352,13 @@
 	     (eq npc-name (car (cdr npc)))))
     (list (setf *selected-npc* (car (car (remove-if-not #'is-npc-name
 							*npc-names*))))
-	  'is 'now 'the 'selected '^N^P^C.)))
+	  'is 'now 'the 'selected '^N^P^C.{{)))
 
 (defun talk ()
   "Display dialogue for current NPC name."
   (labels ((print-action (item)
-	     (format t "-~a ~a~%" (cadr item) (caddr item))))
+	     (progn (format t "(~a): " (cadr item))
+		    (format t (caddr item)))))
     (progn (npc-talk-to *selected-npc*)
 	   (format t "--------------------------------------------------------------------------~%")
 	   (mapcar #'print-action (get-actions *selected-npc* *npc-actions*))

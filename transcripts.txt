@@ -1,0 +1,324 @@
+;;;; Name: Glenn Galvizo; Date: April 16, 2017
+;;;; Course: ICS313; Assignment: 6
+;;;; File: transcripts.txt
+
+;;;; This file holds three transcripts of games: one where you lose to an
+;;;; NPC, one where you lose to the enviroment, and one where you win and 
+;;;; earn your rightful title as Darth (in that order).
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+--------------------------------------------------------------------------
+Welcome to Eyes of Sith!
+
+You are a Sith Lord who has been tasked with killing another Sith in
+the temple, Darth Nox, by your master Darth Imperius. This is your hardest
+task to date- but also the most rewarding. Finish this, and you will finally
+be promoted to Darth. Be warned, facing Nox in your current state is... unwise
+Collect the right items to defeat the Dark Lord, or perish trying.
+
+The only commands allowed in this game are: 
+(LOOK WALK INV HELP QUIT RELOAD SELECT TALK A B C)
+
+To interact with an NPC, first 'select' them and enter 'talk'. NPCs must be
+referred to without spaces in their names (e.g. Darth Nox = darth-nox).
+
+Enjoy the game!
+--------------------------------------------------------------------------
+
+look
+--------------------------------------------------------------------------
+You see an empty row of decorated thrones. All of the lords are currently
+in a meeting.
+--------------------------------------------------------------------------
+You are now in the Dark Councils Chambers on Korriban. There is a door going
+ right from here. There is a stairway going downstairs from here.
+ Darth Imperius is nearby. 
+
+walk downstairs
+--------------------------------------------------------------------------
+The room is chilling despite there being a large amount of people around.
+This place is bustling with individuals all from all over: Imperial
+officers, soldiers, bounty hunters, and of course, Sith.
+--------------------------------------------------------------------------
+You are now in the Sith Temple on Korriban. There is a door going right from
+ here. There is a door going left from here. There is a stairway going upstairs
+ from here. There is a door going west from here. Dark Temple Guard 2 is
+ nearby. Dark Temple Guard 1 is nearby. Apprentice Harken is nearby.
+ Acolyte 2 is nearby. Acolyte 1 is nearby. 
+
+select apprentice-harken
+Apprentice Harken is now the selected NPC.
+
+talk
+What do you want? Begone.
+--------------------------------------------------------------------------
+(A): Of course.
+(B): Back off. I will not be disrespected. *shock only Harken with lightning*.
+(C): Back off. I will not be disrespected. *shock Harken with lightning and the
+Acolytes*.
+--------------------------------------------------------------------------
+ 
+c
+--------------------------------------------------------------------------
+You extend both arms to shock Harken and the acolytes with all of your
+might. You weaken Harken, but the acolytes manage to snatch your personal
+saber away. Harken rises backs up and stabs you in the chest. You fall to
+the floor and watch as the rest of the temple passes on by.
+
+Try again!
+--------------------------------------------------------------------------
+Your game has been reset.
+
+
+
+
+
+
+
+look
+--------------------------------------------------------------------------
+You see an empty row of decorated thrones. All of the lords are currently
+in a meeting.
+--------------------------------------------------------------------------
+You are now in the Dark Councils Chambers on Korriban. There is a door going
+ right from here. There is a stairway going downstairs from here.
+ Darth Imperius is nearby. 
+
+walk downstairs
+--------------------------------------------------------------------------
+The room is chilling despite there being a large amount of people around.
+This place is bustling with individuals all from all over: Imperial
+officers, soldiers, bounty hunters, and of course, Sith.
+--------------------------------------------------------------------------
+You are now in the Sith Temple on Korriban. There is a door going right from
+ here. There is a door going left from here. There is a stairway going upstairs
+ from here. There is a door going west from here. Dark Temple Guard 2 is
+ nearby. Dark Temple Guard 1 is nearby. Apprentice Harken is nearby.
+ Acolyte 2 is nearby. Acolyte 1 is nearby. 
+
+walk west
+--------------------------------------------------------------------------
+The air is still but it is neither hot or cold. You look up and see sand for
+miles. The faint droning of nearby speeders and starships are you can hear.
+--------------------------------------------------------------------------
+You are now in the Valley Of The Dark Lords on Korriban. There is a door
+ going east from here. There is a walkway going north from here. Young Acolyte
+ is nearby. Imperial Trooper 2 is nearby. Imperial Trooper 1 is nearby. 
+
+walk north
+--------------------------------------------------------------------------
+Torches surrond the room. The hair on your arm raises as you feel the raw
+power emanating rom the tomb. You hear faint whispers in the background
+but see no one.
+--------------------------------------------------------------------------
+You are now in the Tomb Of Darth Bane on Korriban. There is a door going
+ left from here. There is a walkway going south from here. Force Ghost is
+ nearby. 
+
+walk left
+--------------------------------------------------------------------------
+You have fallen into a pit of poison! You scream in agony and cry for help
+but no one can hear you. Your last sights are of the bones in your hand-
+with your skin disintegrating around it.
+
+Try again!
+--------------------------------------------------------------------------
+Your game has been reset.
+
+
+
+
+
+
+
+
+look
+--------------------------------------------------------------------------
+You see an empty row of decorated thrones. All of the lords are currently
+in a meeting.
+--------------------------------------------------------------------------
+You are now in the Dark Councils Chambers on Korriban. There is a door going
+ right from here. There is a stairway going downstairs from here.
+ Darth Imperius is nearby. 
+
+walk downstairs
+--------------------------------------------------------------------------
+The room is chilling despite there being a large amount of people around.
+This place is bustling with individuals all from all over: Imperial
+officers, soldiers, bounty hunters, and of course, Sith.
+--------------------------------------------------------------------------
+You are now in the Sith Temple on Korriban. There is a door going right from
+ here. There is a door going left from here. There is a stairway going upstairs
+ from here. There is a door going west from here. Dark Temple Guard 2 is
+ nearby. Dark Temple Guard 1 is nearby. Apprentice Harken is nearby.
+ Acolyte 2 is nearby. Acolyte 1 is nearby. 
+
+walk left
+--------------------------------------------------------------------------
+You see rows of Jedi trapped in cages. For every Jedi scream heard, the
+interrogators scream louder in rage and excitement.
+--------------------------------------------------------------------------
+You are now in the Execution Chambers on Korriban. There is a door going
+ right from here. Jedi 4 is nearby. Jedi 3 is nearby. Jedi 2 is nearby.
+ Jedi 1 is nearby. 
+
+select jedi-3
+Jedi 3 is now the selected NPC.
+
+talk
+Stronger Sith than you have tried and failed to break me.
+--------------------------------------------------------------------------
+(A): I am no ordinary sith. I can get you out of here in exchange for
+your saber.
+(B): I am no ordinary sith. *push saber through her chest*.
+--------------------------------------------------------------------------
+ 
+b
+--------------------------------------------------------------------------
+You draw your saber from your hip and turn on your saber. For a brief moment
+the only sound you hear is the humming of your blade. You extend your blade
+through the cage to pierce her chest. You pick up her Blue Lightsaber.
+--------------------------------------------------------------------------
+ 
+inv
+Items- (Blue Lightsaber Your Saber) 
+
+walk right
+You are now in the Sith Temple on Korriban. There is a door going right from
+ here. There is a door going left from here. There is a stairway going upstairs
+ from here. There is a door going west from here. Dark Temple Guard 2 is
+ nearby. Dark Temple Guard 1 is nearby. Apprentice Harken is nearby.
+ Acolyte 2 is nearby. Acolyte 1 is nearby.
+walk west
+--------------------------------------------------------------------------
+The air is still but it is neither hot or cold. You look up and see sand for
+miles. The faint droning of nearby speeders and starships are you can hear.
+--------------------------------------------------------------------------
+You are now in the Valley Of The Dark Lords on Korriban. There is a door
+ going east from here. There is a walkway going north from here. Young Acolyte
+ is nearby. Imperial Trooper 2 is nearby. Imperial Trooper 1 is nearby. 
+
+select imperial-trooper-1
+Imperial Trooper 1 is now the selected NPC.
+
+talk
+Good afternoon my lord.
+--------------------------------------------------------------------------
+(A): It is not a good afternoon. *force choke*.
+(B): I need your Kolto Pack.
+(C): Good afternoon.
+--------------------------------------------------------------------------
+ 
+a
+--------------------------------------------------------------------------
+Your eyes glow red as your slowly raise your arm upward. "I'm sorry lord-"
+are the last words of this soldier as his body goes limp and drops to the
+ground. You take the Kolto Pack from his body.
+--------------------------------------------------------------------------
+ 
+inv
+Items- (Blue Lightsaber Kolto Pack Your Saber) 
+
+walk north
+--------------------------------------------------------------------------
+Torches surrond the room. The hair on your arm raises as you feel the raw
+power emanating rom the tomb. You hear faint whispers in the background
+but see no one.
+--------------------------------------------------------------------------
+You are now in the Tomb Of Darth Bane on Korriban. There is a door going
+ left from here. There is a walkway going south from here. Force Ghost is
+ nearby. 
+
+select force-ghost
+Force Ghost is now the selected NPC.
+
+talk
+You have upset Darth Bane! You must die!
+--------------------------------------------------------------------------
+(A): Please. I mean you no harm.
+(B): *you draw your saber and try to strike the ghost down*.
+(C): *you try to shock the ghost*.
+--------------------------------------------------------------------------
+ 
+b
+--------------------------------------------------------------------------
+You draw your blade and swing it in the direction of the ghost... but it goes
+right through him. He chokes you and infects you with some sort of poison.
+Luckily you have your Kolto Pack! You inject it and crawl towards one of the
+lesser tombs. You manage to grab the Mysterious Amulet and escape before the
+ghost notices.
+--------------------------------------------------------------------------
+ 
+walk south
+You are now in the Valley Of The Dark Lords on Korriban. There is a door
+ going east from here. There is a walkway going north from here. Young Acolyte
+ is nearby. Imperial Trooper 2 is nearby.
+walk east
+You are now in the Sith Temple on Korriban. There is a door going right from
+ here. There is a door going left from here. There is a stairway going upstairs
+ from here. There is a door going west from here. Dark Temple Guard 2 is
+ nearby. Dark Temple Guard 1 is nearby. Apprentice Harken is nearby.
+ Acolyte 2 is nearby. Acolyte 1 is nearby.
+walk right
+--------------------------------------------------------------------------
+The room is poorly lit, but you see every detail. One side of the room is
+painted with Republic blood while the other is sparkling clean. You glance
+at the dead Repubic troopers only to see the look of terror permanently
+painted on their lifeless faces.
+--------------------------------------------------------------------------
+You are now in the Chamber Of Darth Nox on Korriban. There is a door going
+ left from here. Darth Nox is nearby. 
+
+select darth-nox
+Darth Nox is now the selected NPC.
+
+talk
+What do you want? Can you not see I am busy?
+--------------------------------------------------------------------------
+(A): I have been sent to kill you. Prepare to die.
+(B): Sorry my lord. I did not mean to interefere.
+--------------------------------------------------------------------------
+ 
+a
+--------------------------------------------------------------------------
+You charge forward and Darth Nox narrowly avoids your blade. He triest to
+shock you but the amulet deflects the lightning back toward the Dark Lord
+With Nox weakened, you waste no time and push the saber through his heart
+He falls to the ground next to the troopers he killed earlier. You pickup
+Darth Nox's Hand.
+--------------------------------------------------------------------------
+ 
+inv
+Items- (Mysterious Amulet Blue Lightsaber Darth Nox Hand Your Saber) 
+
+walk left
+You are now in the Sith Temple on Korriban. There is a door going right from
+ here. There is a door going left from here. There is a stairway going upstairs
+ from here. There is a door going west from here. Dark Temple Guard 2 is
+ nearby. Dark Temple Guard 1 is nearby. Apprentice Harken is nearby.
+ Acolyte 2 is nearby. Acolyte 1 is nearby.
+ 
+walk upstairs
+You are now in the Dark Councils Chambers on Korriban. There is a door going
+ right from here. There is a stairway going downstairs from here.
+ Darth Imperius is nearby.
+ 
+select darth-imperius
+Darth Imperius is now the selected NPC.
+
+talk
+Have you killed him yet?
+--------------------------------------------------------------------------
+(A): Yes, I have killed him.
+(B): I did not kill him yet.
+--------------------------------------------------------------------------
+ 
+a
+--------------------------------------------------------------------------
+You hand your master the severed body part. 'Thank you apprentice. This
+is what we do to traitors of the Sith. As promised, you are now a Lord of
+the Sith.
+
+Congratulations! You have won!
+--------------------------------------------------------------------------
+Your game has been reset.
