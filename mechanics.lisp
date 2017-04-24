@@ -98,7 +98,7 @@
 (defparameter *npc-names* nil)
 
 ;;; *SELECTED-NPC* refers to current NPC the user is interacting with
-(defparameter *selected-npc* '^imperial@trooper@1)
+(defparameter *selected-npc* '^darth@imperius)
 
 (defun npcs-at (loc npcs npc-loc)
   "Return the NPCs at the given location."
@@ -235,7 +235,7 @@
   "Reset the game to the beginning state."
   (progn (format t "Your game has been reset.~%")
          (setf *location* '^dark@councils@chambers)
-	 (setf *selected-npc* '^imperial@trooper@1)
+	 (setf *selected-npc* '^darth@imperius)
 	 (setf *nodes* nil) (setf *not-visited* nil) (setf *visited* nil)
 	 (setf *edges* nil)
 	 (setf *npcs* nil) (setf *killed-npcs* nil) (setf *npc-locations* nil)
@@ -352,7 +352,7 @@
 		       *killed-npc-actions*))))
     (progn (mapcar #'del-npc *npcs*)
 	   (mapcar #'del-npc-action *npc-actions*)
-	   (select '^a@dead@person)
+	   (select 'a-dead-person)
 	   '@)))
 
 (defun talk ()
