@@ -9,21 +9,49 @@
 
 ;;; load all locations...
 (new-location ^valley@of@the@dark@lords
-	      "The air is still but it is neither hot or cold. You look up and see sand for miles. The faint droning of nearby speeders and starships are all you can hear.")
+	      (concat-strings (list
+			      "The air is still but it is neither hot or cold. You look~%"
+			      "up and see sand for miles. The faint droning of nearby~%"
+			      "speeders and starships are all you can hear.~%")))
 (new-location ^tomb@of@darth@bane
-	      "Torches surrond the room. The hair on your arm stands raises as you feel the raw power emanating from the tomb. You hear faint whispers in the background but you see no one.")
+	      (concat-strings (list
+			       "Torches surrond the room. The hair on your arm stands~%"
+			       "raises as you feel the raw power emanating from the~%"
+			       "tomb. You hear faint whispers in the background but~%"
+			       "you see no one.~%")))
 (new-location ^sith@temple
-	      "The room is chilling despite there being a large amount of people around. This place is bustling with individuals all from all over: Imperial officers, soldiers, bounty hunters, and of course, Sith.")
+	      (concat-strings (list
+			       "The room is chilling despite there being a large~%"
+			       "amount of people around. This place is bustling with~%"
+			       "individuals all from all over: Imperial officers,~%"
+			       "soldiers, bounty hunters, and of course, Sith.~%")))
 (new-location ^execution@chambers
-	      "You see rows of Jedi trapped in cages. For every Jedi scream heard, the interrogators scream louder in rage and excitement.")
+	      (concat-strings (list
+			       "You see rows of Jedi trapped in cages. For every Jedi~%"
+			       "scream heard, the interrogators scream louder in rage~%"
+			       "and excitement.~%")))
 (new-location ^dark@councils@chambers
-	      "You see an empty row of decorated thrones. All of the lords are currently in a meeting.")
+	      (concat-strings (list
+			       "You see an empty row of decorated thrones. All of the~%"
+			       "lords are currently in a meeting.~%")))
 (new-location ^chamber@of@darth@nox
-	      "The room is poorly lit, but you see every detail. One side of the room is painted with Republic blood while the other is sparkling clean. You glance at the dead Repubic troopers only to see the look of terror permanently painted on their lifeless faces.")
+	      (concat-strings (list
+			       "The room is poorly lit, but you see every detail.~%"
+			       "One side of the room is painted with Republic blood~%"
+			       "while the other is sparkling clean. You glance at the~%"
+			       "dead Repubic troopers only to see the look of terror~%"
+			       "permanently painted on their lifeless faces.~%")))
 (new-location ^meeting@room
-	      "You have interrupted the Dark Council meeting! The closest Dark Lord, Darth Thanton force chokes you as your world fades to black.")
+	      (concat-strings (list
+			       "You have interrupted the Dark Council meeting! The~%"
+			       "closest Dark Lord, Darth Thanton force chokes you as~%"
+			       "your world fades to black.~%")))
 (new-location ^mysterious@room
-	      "You have fallen into a pit of poison! You scream in agony and cry for help but no one can hear you. Your last sights are of the bones in your hand- with your skin disintegrating around it.")
+	      (concat-strings (list
+			       "You have fallen into a pit of poison! You scream in~%"
+			       "agony and cry for help but no one can hear you. Your~%"
+			       "last sights are of the bones in your hand- with your skin~%"
+			       "disintegrating around it.~%")))
 
 ;;; load all edges
 (new-path ^valley@of@the@dark@lords ^tomb@of@darth@bane walkway north south)
@@ -61,9 +89,9 @@
 (new-npc ^force@ghost
 	 "You have upset Darth Bane! You must die!")
 (new-npc ^acolyte@1
-	 "Sorry my lord. I am currently talking with lord Harken")
+	 "Sorry my lord. I am currently talking with lord~%Harken")
 (new-npc ^acolyte@2
-	 "Sorry my lord. I am currently talking with lord Harken.")
+	 "Sorry my lord. I am currently talking with lord~%Harken.")
 (new-npc ^apprentice@harken
 	 "What do you want? Begone.")
 (new-npc ^dark@temple@guard@1
@@ -77,7 +105,7 @@
 (new-npc ^jedi@2
 	 "Kill me if you must. The Jedi have already won.")
 (new-npc ^jedi@3
-	 "Stronger Sith than you have tried and failed to break me.")
+	 "Stronger Sith than you have tried and failed to~%break me.")
 (new-npc ^jedi@4
 	 "You will never get anything out of me.")
 
@@ -93,7 +121,7 @@
 (new-npc-action ^imperial@trooper@1 a
 		"It is not a good afternoon. *force choke*.")
 (new-npc-action ^imperial@trooper@2 c
-		"Good afternnon.")
+		"Good afternoon.")
 (new-npc-action ^imperial@trooper@2 b
 		"Give me your blaster.")
 (new-npc-action ^imperial@trooper@2 a
@@ -101,7 +129,7 @@
 (new-npc-action ^young@acolyte c
 		"Show some respect you scum. It is lord. *shock*.")
 (new-npc-action ^young@acolyte b
-	        "Hi there young fella. Sure thing, show me what you got.")
+	        "Hi there young fella. Sure thing, show me what~%you got.")
 (new-npc-action ^young@acolyte a
 		"Sure thing. *strike down with saber*.")
 (new-npc-action ^jedi@1 a
@@ -112,13 +140,13 @@
 		"I am no ordinary sith. *push saber through her
 		chest*.")
 (new-npc-action ^jedi@3 a
-		"I am no ordinary sith. I can get you out of here in exchange for your saber.")
+		"I am no ordinary sith. I can get you out of here in~%exchange for your saber.")
 (new-npc-action ^jedi@4 a
 		"*pushes saber through knee* How about now?")
 (new-npc-action ^apprentice@harken c
-		"Back off. I will not be disrespected. *shock Harken with lightning and the Acolytes*.")
+		"Back off. I will not be disrespected. *shock Harken~%with lightning and the Acolytes*.")
 (new-npc-action ^apprentice@harken b
-		"Back off. I will not be disrespected. *shock only Harken with lightning*.")
+		"Back off. I will not be disrespected. *shock only~%Harken with lightning*.")
 (new-npc-action ^apprentice@harken a
 		"Of course.")
 (new-npc-action ^force@ghost c

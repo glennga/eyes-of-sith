@@ -19,9 +19,9 @@
   
 (defun describe-location (location nodes)
   "Given the location and node list, return description of location."
-  (progn (format t "----------------------------------------------------------------~%")
-	 (format t "~a~%" (cadr (assoc location nodes)))
-	 (format t "----------------------------------------------------------------~%")))
+  (progn (format t "--------------------------------------------------------------------------~%")
+	 (format t (cadr (assoc location nodes)))
+	 (format t "--------------------------------------------------------------------------~%")))
 
 (defun state-location (loc)
   "State the location given. Avoids verbose output w/ describe-location."
@@ -31,7 +31,7 @@
   "Macro to simplify adding locations."
   `(if (assoc ',loc *nodes*) ; check if location already exists
        (format t "Location ~a already exists." ',loc)
-       (progn (push (list ',loc ',desc) *nodes*)
+       (progn (push (list ',loc ,desc) *nodes*)
 	      (push ',loc *not-visited*)))) ; otherwise, add to list
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -198,8 +198,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun look ()
   "Return description of NPCs, edges at the current location."
-  (prog1 (append (state-location *location*)
-	         (describe-location *location* *nodes*)
+  (prog1 (append (describe-location *location* *nodes*)
+		 (state-location *location*)
 		 (describe-paths *location* *edges*)
 		 (describe-npcs *location* *npcs* *npc-locations*))
 	 (if (member *location* *not-visited*) ; remove from not-visited list
@@ -246,9 +246,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun help ()
   "Return allowed commands."
-  (append '(i know the following commands = [)
-	  *allowed-commands*
-	  '(].)))
+  (progn (format t "The following commands are accepted =~%~a"
+		 *allowed-commands*)
+	 '@)) ; print nothing from print
 
 (defun reload ()
   "Reset the game to the beginning state."
@@ -341,7 +341,13 @@
   (labels ((print-action (item)
 	     (format t "-~a ~a~%" (cadr item) (caddr item))))
     (progn (npc-talk-to *selected-npc*)
-	   (mapcar #'print-action (get-actions *selected-npc* *npc-actions*)))
-	   '@))
+	   (format t "--------------------------------------------------------------------------~%")
+	   (mapcar #'print-action (get-actions *selected-npc* *npc-actions*))
+	   (format t "--------------------------------------------------------------------------~%")
+    '@)))
+
+(defun concat-strings (list)
+  "Concatenate strings together from a list."
+  (apply #'concatenate 'string list))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
