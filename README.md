@@ -1,6 +1,6 @@
 # Eyes of Sith
 
-![](poster.png)
+![poster](poster.PNG)
 
 ### About
 
